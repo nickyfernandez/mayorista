@@ -6,35 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    //
-    // public $table = 'candys';
-    // public $primaryKey = 'id';
-    // public $guarded = [];
-
-    // public function getCategorieName(): string{
-    //
-    //   if($this->categorie_id){
-    //     $categorie = Category::find($this->categorie_id);
-    //
-    //
-    //     return $categorie->name;
-    //   }
-    //
-    //   return "Sin Categoria";
-    // }
+  public $table = 'carts';
+  public $primaryKey = 'id_cart';
+  public $guarded = [];
 
 
-    public function users(){
-      return $this->belongsToMany("App\User","mi_carrito","candy_id","user_id" );
+
+  public function getProductName(): string{
+    if($this->id_product){
+      $product = Product::find($this->id_product);
+      return $product->name;
     }
+    return "Sin Nombre";
+  }
+  public function getProductDescripcion(): string{
+    if($this->id_product){
+      $product = Product::find($this->id_product);
+      return $product->descripcion;
+    }
+    return "Sin Nombre";
+  }
 
 
-//
-// public function getName()
-// {
-//   $candy = Candy::find($this->candy_id);
-//
-//
-//   return $candy->title;
-// }
+
+
+
 }

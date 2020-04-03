@@ -69,6 +69,17 @@ body {
     margin-bottom: 100px;
   }
 
+  #prodescripcion{
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 250px;
+  }
+
+  .cart-img{
+    max-height: 70px;
+  }
+
 
 
 [tabindex="-1"]:focus {
@@ -8772,6 +8783,17 @@ h1, h2, h3, h4, h5,
       -webkit-transition: all 0.3s ease;
       -ms-transition: all 0.3s ease;
       transition: all 0.3s ease; }
+      .product .text .bottom-area-left {
+        position: absolute;
+        bottom: 15px;
+        left: 200px;
+        right: 0;
+        opacity: 0;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        transition: all 0.3s ease; }
     .product .text .bottom-area {
       position: absolute;
       bottom: 15px;

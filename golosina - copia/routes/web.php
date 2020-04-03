@@ -12,7 +12,7 @@
 |
 */
 
-Route::get('/', "PaginaController@index");
+// Route::get('/', "PaginaController@index");
 
 Route::get('/faq', "PaginaController@faq");
 
@@ -34,6 +34,13 @@ Route::get('/eliminar/{id}', "ProductController@delete");
 Route::get('/editar/{id}', "ProductController@edit1");
 
 Route::post('/editar/{id}', "ProductController@edit2");
+
+Route::get('/carrito', "CartController@listado");
+
+Route::post('/{id}', "CartController@add");
+
+Route::get('/carrito/{id}', "CartController@cancel");
+
 
 // Route::get('/producto', "CandyRashController@producto");
 //

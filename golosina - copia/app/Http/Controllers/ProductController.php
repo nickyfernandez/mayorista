@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Auth;
 use App\Product;
 use App\Category;
 use App\Local;
@@ -19,6 +20,8 @@ class ProductController extends Controller{
 
     }
 
+
+
     public function seenew(){
       $categorias = Category::all();
       $vac = compact('categorias');
@@ -27,6 +30,8 @@ class ProductController extends Controller{
       return view('new', $vac,$vac2 );
       // return view('new');
     }
+
+
 
     public function create(Request $req){
 
@@ -59,6 +64,8 @@ class ProductController extends Controller{
     }
 
 
+
+
     public function detail($id){
 
       $detalle = Product::find($id);
@@ -68,23 +75,37 @@ class ProductController extends Controller{
       return view('detail', $vac );
     }
 
+
+
     public function edit1($id){
 
       $detalle = Product::find($id);
 
-      $vac = compact('detalle');
+      // $vac = compact('detalle');
 
-      return view('edit', $vac );
+      $categorias = Category::all();
+      // $vac1 = compact('categorias');
+      $locales = Local::all();
+      // $todos = [ categorias => $categorias,
+      // locales => $locales ,
+      // ];
+      // $vac1 = compact('todos');
+
+
+      // return view('edit', $vac, $vac1  );
+      return view('edit')->with('detalle', $detalle)->with('categorias', $categorias)->with('locales', $locales);
     }
+
+
 
 
     public function edit2($id,Request $req){
       $detalle = Product::find($id);
       $detalle->name = $req["title"];
-      // $detalle->stock = $req["stock"];
-      // $detalle->price = $req["price"];
-      // $detalle->id_category = $req["category_id"];
-      // $detalle->id_local = $req["local_id"];
+      $detalle->stock = $req["stock"];
+      $detalle->price = $req["price"];
+      $detalle->id_category = $req["category_id"];
+      $detalle->id_local = $req["local_id"];
 
 
 

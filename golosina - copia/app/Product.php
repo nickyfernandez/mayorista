@@ -12,6 +12,42 @@ class Product extends Model
     public $guarded = [];
 
 
+    public function getCategorieName(): string{
+
+      if($this->id_category){
+        $category = Category::find($this->id_category);
+
+
+        return $category->name;
+      }
+
+      return "Sin Categoria";
+    }
+
+    public function getLocalName(): string{
+
+      if($this->id_local){
+        $local = Local::find($this->id_local);
+
+
+        return $local->local;
+      }
+
+      return "Sin Local";
+    }
+
+    public function getCategorieAll(): string{
+
+
+        $categorias = Category::all();
+
+
+        return $categorias;
+      }
+
+
+
+
 
     public function tag(){
       return $this->belongsToMany(Tag::class);
@@ -27,5 +63,10 @@ class Product extends Model
       // return $this->belongsToMany("App\User","mi_carrito","candy_id","user_id" );
       return $this->belongsToMany(User::class);
       // hacer table intermeda
+    }
+
+    public function local(){
+      // return $this->belongTo('App\Tipo','id_kind');
+      return $this->belongTo(Local::class);
     }
 }

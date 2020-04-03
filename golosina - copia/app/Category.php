@@ -12,6 +12,19 @@ class Category extends Model
     public $guarded = [];
 
 
+    public function getCategorieAll(): string{
+
+
+        $categorias = Category::all();
+
+
+        return $categorias;
+      }
+
+      
+
+
+
 
 
 }
