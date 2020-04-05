@@ -17,21 +17,28 @@
 
                       <div class="col-md-12">
                         <div class="form-group">
-                            <input type="text" class="form-control" value="" id="title" name="title" placeholder="Titulo">
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" id="title" name="name" placeholder="Titulo">
+                              @error ('name')
+                                <div class="invalid-feedback">{{$message}}</div>
+                              @enderror
                             <p></p>
                         </div>
                       </div>
 
                       <div class="col-md-12">
                           <div class="form-group">
-                              <input type="text" class="form-control" id="price" value="" name="price" placeholder="Precio">
-                              <p></p>
+                              <input type="text" class="form-control @error('price') is-invalid @enderror"  value="{{old('price')}}" id="price"  name="price" placeholder="Precio">
+                              @error ('price')
+                                <div class="invalid-feedback">{{$message}}</div>
+                              @enderror
                           </div>
                       </div>
                       <div class="col-md-12">
                           <div class="form-group">
-                              <input type="text" class="form-control" id="stock" name="stock"  value="" placeholder="Stock">
-                              <p></p>
+                              <input type="text" class="form-control @error('stock') is-invalid @enderror" value="{{old('stock')}}" id="stock" name="stock"   placeholder="Stock">
+                                @error ('stock')
+                                  <div class="invalid-feedback">{{$message}}</div>
+                                @enderror
                           </div>
                       </div>
 
@@ -67,7 +74,10 @@
 
 
                       <div class="col-md-12">
-                          <button type="submit" class="btn btn-primary full-width" name="button">Registrar</button>
+                        <div class="d-flex justify-content-around">
+                          <button type="submit" class="btn btn-primary full-width py-3 px-5" name="button">Registrar</button>
+                          <a href="/productos" class="btn btn-black py-3 px-5">Atras</a>
+                        </div>
                       </div>
                     </form>
                   </div>

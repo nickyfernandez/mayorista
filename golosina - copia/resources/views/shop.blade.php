@@ -16,10 +16,11 @@
     <br>
     <div class="container">
       <div class="d-flex justify-content-around">
-
+        {{-- @if(Auth::user() && Auth::user()->admin) --}}
           <nav class="content-center">
             <a href="/producto/new" class="btn btn-primary">Cargar nuevo</a>
           </nav>
+        {{-- @endif --}}
 
       </div>
     </div>
@@ -78,7 +79,7 @@
         		    						<p class="price"><span class="mr-2 price-dc">{{$producto->price}}</span><span class="price-sale">{{$producto->price}}</span></p>
         		    					</div>
         	    					</div>
-                      <form class="row" action="/{{$producto->id}}" method="post">
+                      <form class="row" action="/compra/{{$producto->id}}" method="post">
                         @csrf
                         @if (Auth::user())
                           <input type="hidden" value="{{Auth::user()->id}}" name="usuario" >

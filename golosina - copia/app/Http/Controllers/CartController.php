@@ -49,8 +49,20 @@ class CartController extends Controller
 
 
       $productonuevo->save();
-      // return redirect("/productos");
-      return redirect("/");
+
+      $url = url()->previous();
+
+      return redirect($url);
+
+      // return javascript:history.go(-1);
+
+      // return back()->withInput();
+
+      // Redirect::back()
+
+      // return redirect("javascript:history.go(-1)");
+
+      // <a href="{{ route('clientes', array('cliente' => $cliente->id, 'page' => Input::get('page'))) }}">&laquo; Volver</a>
       // return redirect("/")->with('nombreproducto', $nombreproducto);
     }
 
@@ -68,6 +80,35 @@ class CartController extends Controller
     return redirect("/carrito");
   }
 
+
+  // public function pedido(){
+  //
+  //   $productos = Cart::all();
+  //
+  //   foreach ($productos as $producto) {
+  //     if ($producto->id_user == (Auth::user()->id)) {
+  //       if ($producto->deleteit == 1) {
+  //         continue;
+  //       }
+  //       if ($producto->buyit == 1) {
+  //         continue;
+  //       }
+  //
+  //
+  //       $productonuevo = new Pedido();
+  //       $productonuevo->id_user = $req["usuario"];
+  //       $productonuevo->id_product = $req["id"];
+  //       $productonuevo->price = $req["price"];
+  //       $productonuevo->quantity = $req["quantity"];
+  //
+  //
+  //     }
+  //
+  //   }
+  //
+  //   return view('cart', $vac);
+  // }
+  //
 
 
 

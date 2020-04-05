@@ -36,18 +36,28 @@ class ProductController extends Controller{
     public function create(Request $req){
 
       $reglas = [
-        "avatar" => "file",
+        "avatar" => "image",
+        'name' => ['required', 'string', 'max:100', 'min:3', 'unique:products'],
+        'stock' => ['required', 'integer', 'max:10', 'min:0'],
+        'price' => ['required', 'numeric', 'min:0', 'max:10'],
       ];
 
       $mensajes = [
-        "file" => "El archivo no es una imagen",
+        "image" => "El archivo no es una imagen",
+        "required" => "El campo esta vacio",
+        "string" => "El campo debe ser un texto",
+        "integer" => "El campo debe ser un numero entero",
+        "numeric" => "El campo debe ser un numero",
+        "min" => "Debe tener mas de :min caracteres",
+        "max" => "Maximo de :max caracteres",
+        "unique" => "El nombre ya esta en uso",
       ];
 
       $this->validate($req, $reglas, $mensajes);
 
 
       $productonuevo = new Product();
-      $productonuevo->name = $req["title"];
+      $productonuevo->name = $req["name"];
       $productonuevo->stock = $req["stock"];
       $productonuevo->price = $req["price"];
       $productonuevo->id_category = $req["category_id"];
@@ -59,8 +69,8 @@ class ProductController extends Controller{
         $productonuevo->avatar = $nombre;
       }
       $productonuevo->save();
-      // return redirect("/productos");
-      return redirect("/");
+      return redirect("/productos");
+
     }
 
 
@@ -68,11 +78,15 @@ class ProductController extends Controller{
 
     public function detail($id){
 
+
+
+
       $detalle = Product::find($id);
 
       $vac = compact('detalle');
 
       return view('detail', $vac );
+      
     }
 
 
@@ -137,8 +151,8 @@ class ProductController extends Controller{
       // Storage::delete($candy->avatar);
       $candy->delete();
 
-      // return redirect("/productos");
-      return redirect("/");
+      return redirect("/productos");
+
 
     }
 

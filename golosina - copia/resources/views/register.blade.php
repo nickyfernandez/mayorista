@@ -25,6 +25,7 @@
                           </div>
                         </div>
 
+
                         <div class="col-md-12">
                             <div class="form-group">
                                 <input type="email" class="form-control @error ('email') is-invalid @enderror" id="" value="{{old('email')}}" name="email" placeholder="Email">

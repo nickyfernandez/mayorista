@@ -1,6 +1,5 @@
 <?php
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +11,7 @@
 |
 */
 
-// Route::get('/', "PaginaController@index");
+Route::get('/', "PaginaController@index");
 
 Route::get('/faq', "PaginaController@faq");
 
@@ -20,14 +19,14 @@ Route::get('/register', "PaginaController@register");
 
 Route::get('/login', "PaginaController@login");
 
-// Route::get('/productos', "ProductController@listado");
-Route::get('/', "ProductController@listado");
+Route::get('/productos', "ProductController@listado");
+
 
 Route::get('/productos/{id}', "ProductController@detail");
 
-Route::get('/producto/new', "ProductController@seenew");
+Route::get('/producto/new', "ProductController@seenew")->middleware(['admin']);
 
-Route::post('/producto/new', "ProductController@create");
+Route::post('/producto/new', "ProductController@create")->middleware(['admin']);
 
 Route::get('/eliminar/{id}', "ProductController@delete");
 
@@ -35,11 +34,17 @@ Route::get('/editar/{id}', "ProductController@edit1");
 
 Route::post('/editar/{id}', "ProductController@edit2");
 
+// ----------------------------------------------
+
 Route::get('/carrito', "CartController@listado");
-
-Route::post('/{id}', "CartController@add");
-
+//
+Route::post('/compra/{id}', "CartController@add");
+//
 Route::get('/carrito/{id}', "CartController@cancel");
+
+Route::get('/pedido', "CartController@pedido");
+
+// ----------------------------------------------
 
 
 // Route::get('/producto', "CandyRashController@producto");
